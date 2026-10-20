@@ -20,7 +20,7 @@
     "api_key": {
       "type": "string",
       "title": "SellWinners API key",
-      "description": "Create a key at https://sellwinners.com/dashboard/keys. Each tool call counts once against your plan's monthly quota.",
+      "description": "Create a key at https://sellwinners.com/dashboard/keys. A paid plan reads every brand; the Free plan is a demo that reads a fixed set of demo brands only. Each tool call counts once against your plan's monthly quota.",
       "sensitive": true,
       "required": true
     }

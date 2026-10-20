@@ -31,7 +31,12 @@ In Claude Code you can also run each one directly, for example `/sellwinners:com
 2. Install the plugin. Claude Code asks for the API key when the plugin is enabled and keeps it in your system's secure credential store, not in a settings file.
 3. Ask a question. Claude calls the SellWinners tools it needs.
 
-What you can read depends on your SellWinners plan. When a plan shortens an answer, the answer says what was left out, and Claude tells you. Plans and quotas are on the [pricing page](https://sellwinners.com/pricing).
+## Plans
+
+- **Paid plans** read every brand, store, ad and email, within the plan's monthly quota and rate limit.
+- **Free** is a demo: the tools answer only about a fixed set of demo brands, which the answers list. A question about any other brand is refused, and Claude tells you which brands the demo covers instead of retrying.
+
+Plans, prices and quotas are on the [pricing page](https://sellwinners.com/pricing).
 
 ## What the plugin sends, and where
 

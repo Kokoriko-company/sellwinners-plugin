@@ -27,3 +27,5 @@ Search tools answer with `data` and `pagination`. Ask for the next `page` only w
 - Close with what is working across the set: recurring hooks, offers, formats and lengths.
 - When the user wants their own ads, write new hooks and scripts from those patterns in their brand's voice; don't copy a competitor's copy word for word.
 - When an answer carries `restrictions`, the user's plan shortened it. Say what was left out.
+
+When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other tools. Tell the user which brands the demo covers (the message lists them) and that every other brand needs a paid SellWinners plan.
