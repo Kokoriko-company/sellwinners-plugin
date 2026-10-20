@@ -1,0 +1,15 @@
+{
+  "name": "sellwinners",
+  "description": "The SellWinners plugin for Claude.",
+  "owner": {
+    "name": "SellWinners",
+    "email": "support@sellwinners.com"
+  },
+  "plugins": [
+    {
+      "name": "sellwinners",
+      "source": "./",
+      "description": "E-commerce and ad intelligence in Claude: winning products, Meta, Google and TikTok ad creatives, competitor briefs and tracked brands."
+    }
+  ]
+}

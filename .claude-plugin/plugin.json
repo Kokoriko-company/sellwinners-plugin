@@ -1,0 +1,28 @@
+{
+  "name": "sellwinners",
+  "displayName": "SellWinners",
+  "version": "1.0.0",
+  "description": "E-commerce and ad intelligence in Claude: find winning products, study Meta, Google and TikTok ad creatives, brief a competitor's Shopify store and emails, and follow the brands you track.",
+  "author": {
+    "name": "SellWinners",
+    "email": "support@sellwinners.com",
+    "url": "https://sellwinners.com"
+  },
+  "homepage": "https://sellwinners.com/mcp",
+  "license": "MIT",
+  "keywords": ["ecommerce", "shopify", "product-research", "ad-library", "meta-ads", "tiktok-ads", "competitor-analysis", "email-marketing"],
+  "icon": "./assets/logo.png",
+  "documentationUrl": "https://sellwinners.com/docs",
+  "supportUrl": "https://sellwinners.com/contact",
+  "privacyPolicyUrl": "https://sellwinners.com/privacy",
+  "termsOfServiceUrl": "https://sellwinners.com/terms",
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "SellWinners API key",
+      "description": "Create a key at https://sellwinners.com/dashboard/keys. Each tool call counts once against your plan's monthly quota.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}
