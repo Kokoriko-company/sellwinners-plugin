@@ -26,4 +26,6 @@ Lead with what changed and why it matters: new launches, ads gaining rank, new h
 
 Tools that delete, archive, remove or create a public share link need `confirm=true`. Before you pass it, tell the user exactly what will be removed or made public and wait for them to agree. A public link lets anyone who has it see the board, folder or ad.
 
-When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other tools. Tell the user which brands the demo covers (the message lists them) and that every other brand needs a paid SellWinners plan.
+When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other tools. Tell the user which brands the demo covers (the message lists them) and that other brands need a paid SellWinners plan, with the plans link the message gives.
+
+When a tool answers that the monthly quota is used up, or that the plan doesn't include MCP access, stop calling SellWinners tools for this request. Tell the user in one sentence, with the reset date or the plans link the message gives.
