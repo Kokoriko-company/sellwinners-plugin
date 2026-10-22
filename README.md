@@ -27,12 +27,12 @@ In Claude Code you can also run each one directly, for example `/sellwinners:com
 
 ## Setup
 
-You need a SellWinners account. Full data needs a paid plan; see [Plans](#plans).
+You need a SellWinners account. What the tools can do depends on your plan; see [Plans](#plans).
 
 1. Create an account at [sellwinners.com](https://sellwinners.com) if you don't have one.
 2. Install the plugin and connect it to your account:
    - **claude.ai, Claude Desktop or Cowork:** add SellWinners from **Customize → Plugins → Discover**, open its **Connectors** tab, select **Add** if it shows Not added, then **Connect**. On Team or Enterprise plans, an Owner adds the connector first.
-   - **Claude Code:** install it from `/plugin`, then run `/mcp`, choose the **sellwinners** server (listed as `plugin:sellwinners:sellwinners`) and select **Authenticate**. Claude Code stores the sign-in with its other credentials and renews it on its own.
+   - **Claude Code:** install it with `/plugin install sellwinners --marketplace Kokoriko-company/sellwinners-plugin` (Claude Code 2.1.275 or later; or install it from `/plugin`), then run `/mcp`, choose the **sellwinners** server (listed as `plugin:sellwinners:sellwinners`) and select **Authenticate**. Claude Code stores the sign-in with its other credentials and renews it on its own.
 
    Either way your browser opens SellWinners. Log in as usual and select **Allow**.
 3. Ask a question. Claude calls the SellWinners tools it needs.
@@ -45,19 +45,20 @@ To disconnect, open **Dashboard → MCP server → Connected apps** on sellwinne
 claude mcp add --transport http sellwinners-key https://mcp.sellwinners.com/mcp --header "X-API-Key: YOUR_KEY"
 ```
 
+With a key, a call your plan doesn't allow comes back as an HTTP error (402, 403 or 429) that gives the reason.
+
 ## Plans
 
-- **Paid plans** read every brand, store, ad and email, within the plan's monthly quota and rate limit.
-- **Free** is a demo: the tools answer only about a fixed set of demo brands, which the answers list. A question about any other brand is refused, and Claude tells you which brands the demo covers instead of retrying.
+Your SellWinners plan decides what the tools can do, how many requests you have each month and how fast you can make them. Plans are described on the [pricing page](https://sellwinners.com/pricing).
 
-Plans, prices and quotas are on the [pricing page](https://sellwinners.com/pricing).
+When you're signed in and a request is outside your plan, or your requests for the month are used up, the tool answers with a short message. Claude tells you what it says, with the link SellWinners gives, and doesn't try to get around it.
 
 ## What the plugin sends, and where
 
 - The plugin itself runs no code on your machine and stores nothing. It contains only skills (Markdown) and one MCP server reference.
 - Signing in happens on sellwinners.com, in your browser. Claude never sees your password. SellWinners gives Claude an access token that lasts one hour and a refresh token that renews it; the connection appears under **Dashboard → MCP server → Connected apps** until you disconnect it.
 - Claude sends each tool call to the SellWinners MCP server at `https://mcp.sellwinners.com/mcp` over HTTPS, with the access token in the `Authorization` header. A call carries only the arguments Claude chose for that tool, such as a niche, keywords, a store domain or an ad id. Your conversation is not sent.
-- SellWinners counts each tool call once against your plan's monthly quota, except the usage tools (`usage_get`, `check_credits`), and keeps a request log for metering, abuse prevention and support. The [privacy policy](https://sellwinners.com/privacy) covers what is kept and for how long.
+- Tool calls count against your plan's requests, as the [pricing page](https://sellwinners.com/pricing) describes. SellWinners keeps a request log for metering, abuse prevention and support. The [privacy policy](https://sellwinners.com/privacy) covers what is kept and for how long.
 - Write tools change your own SellWinners account only: tracked brands, boards, favorites and share links. Tools that delete or archive something or create a public link require an explicit confirmation, and the skills tell Claude to ask you first.
 - Answers can contain links to ad images, videos and product pages. Opening one fetches it from SellWinners or from the store that hosts it.
 

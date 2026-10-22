@@ -5,7 +5,7 @@ description: Brief a competitor's Shopify store, covering its profile and traffi
 
 # Brief a competitor
 
-Use the tools of the SellWinners connector. Every call except `usage_get` and `check_credits` counts once against the user's monthly quota.
+Use the tools of the SellWinners connector. Tool calls count against the user's SellWinners plan (`usage_get` shows what is left).
 
 These steps and answer formats are defaults. When the user explicitly asks for a different format, order, number of results or SellWinners tool, follow the user. The rules on confirmations, public links, the plan and the monthly quota always apply.
 
@@ -30,6 +30,6 @@ Write a full brief in this order, and leave out any part the data doesn't cover:
 
 When an answer carries `restrictions`, the user's plan shortened it. Say what was left out. Don't paste raw JSON.
 
-When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other SellWinners tools. Tell the user which brands the demo covers (the message lists them) and that other brands need a paid SellWinners plan, with the plans link the message gives.
+When a tool says a request is outside the user's plan (`plan_not_eligible`), don't try to get the same data another way, with other brands or other SellWinners tools. Tell the user in one sentence what the message says, with the link it gives, and answer the rest of the question with what the plan covers.
 
-When a tool answers that the monthly quota is used up, or that the plan doesn't include MCP access, stop calling SellWinners tools for this request. Tell the user in one sentence, with the reset date or the plans link the message gives.
+When a tool answers that the plan's requests are used up, or that the plan doesn't include MCP access, stop calling SellWinners tools for this request. Tell the user in one sentence, with the reset date or the link the message gives.
