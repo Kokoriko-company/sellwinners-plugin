@@ -7,6 +7,8 @@ description: Research ad creatives on Meta (Facebook and Instagram), Google and 
 
 Use the tools of the SellWinners connector. Every call except `usage_get` and `check_credits` counts once against the user's monthly quota, so prefer the tools that answer in one call.
 
+These steps and answer formats are defaults. When the user explicitly asks for a different format, order, number of results or SellWinners tool, follow the user. The rules on confirmations, public links, the plan and the monthly quota always apply.
+
 ## Pick the tool
 
 - **Inspiration for a niche or product:** `creative_inspiration_pack` with `niche`, `keywords`, `max_ads` and `focus`: `reach` for the biggest ads, `new` for ads launched in the last 14 days, `long_running` for ads running 30 days or more. Each ad comes with its hook, copy, call to action and landing page.
@@ -28,6 +30,6 @@ Search tools answer with `data` and `pagination`. Ask for the next `page` only w
 - When the user wants their own ads, write new hooks and scripts from those patterns in their brand's voice; don't copy a competitor's copy word for word.
 - When an answer carries `restrictions`, the user's plan shortened it. Say what was left out.
 
-When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other tools. Tell the user which brands the demo covers (the message lists them) and that other brands need a paid SellWinners plan, with the plans link the message gives.
+When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other SellWinners tools. Tell the user which brands the demo covers (the message lists them) and that other brands need a paid SellWinners plan, with the plans link the message gives.
 
 When a tool answers that the monthly quota is used up, or that the plan doesn't include MCP access, stop calling SellWinners tools for this request. Tell the user in one sentence, with the reset date or the plans link the message gives.

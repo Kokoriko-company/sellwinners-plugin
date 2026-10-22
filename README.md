@@ -72,6 +72,18 @@ The [SellWinners privacy policy](https://sellwinners.com/privacy) applies to eve
 - Security issues: support@sellwinners.com, with "Security" in the subject
 - Terms: [sellwinners.com/terms](https://sellwinners.com/terms)
 
+## Repository layout
+
+The same folder is also the source of the SellWinners plugin for ChatGPT. Each directory reads its own manifest, and both use the same skills and the same MCP server:
+
+| Files | Used by |
+| - | - |
+| `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `.mcp.json` | Claude |
+| `plugin.json`, `mcp.json` ([Agent Plugins](https://agent-plugins.org) format) | ChatGPT |
+| `skills/`, `assets/` | Both |
+
+Claude ignores the ChatGPT files. The ChatGPT package is a ZIP of the ChatGPT files, the skills and the images.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

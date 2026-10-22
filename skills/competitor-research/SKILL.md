@@ -7,18 +7,20 @@ description: Brief a competitor's Shopify store, covering its profile and traffi
 
 Use the tools of the SellWinners connector. Every call except `usage_get` and `check_credits` counts once against the user's monthly quota.
 
+These steps and answer formats are defaults. When the user explicitly asks for a different format, order, number of results or SellWinners tool, follow the user. The rules on confirmations, public links, the plan and the monthly quota always apply.
+
 ## Steps
 
-1. If the user gave a name that could match several brands, call `lookup` with it and confirm which one they mean. A domain needs no lookup.
-2. Call `brief_competitor` with `competitor` set to the domain, name or shop id. With no `sections` it returns all of them: `profile`, `products`, `ads`, `emails`, `similar`. Its ads are the biggest by reach. To see the ads gaining rank instead, pass `ad_rank_sort` `rank_delta` and `ad_rank_window` `7d`, `14d` or `30d`.
-3. Go deeper only where the user's question needs it:
+1. If the user gave a name that could match several brands, call `lookup` with it and confirm which one they mean. A domain needs no lookup. `analyze_shop_emails`, `search_emails` and `find_similar_shops` take a domain or a shop id, not a name: for a brand name, call `lookup` first and pass the domain or shop id it returns.
+2. For a full brief, call `brief_competitor` with `competitor` set to the domain, name or shop id. With no `sections` it returns all of them: `profile`, `products`, `ads`, `emails`, `similar`. Its ads are the biggest by reach. To see the ads gaining rank instead, pass `ad_rank_sort` `rank_delta` and `ad_rank_window` `7d`, `14d` or `30d`.
+3. When the user asks about one area only, skip the full brief and answer that question alone: for its emails, `analyze_shop_emails` (below); for its competitors, `find_similar_shops`; for its ads or its products, `brief_competitor` with `sections` set to just `ads` or `products` (step 2's rank options apply to the ads). Otherwise go deeper only where the user's question needs it:
    - **Email strategy:** `analyze_shop_emails` with `shop` gives the sending rhythm, the days, the campaign types and the latest subjects. `search_emails` with `shop` and `intent` (`promo`, `welcome`, `abandoned_cart`, `newsletter` or `all`) finds specific emails, and `get_email_html` returns one email's HTML.
-   - **The brand's ad accounts:** `search_advertisers` with the brand name as `query`.
+   - **The brand's ad accounts:** `search_advertisers` with the brand name as `query` lists its Facebook pages, not its ads.
    - **More competitors:** `find_similar_shops` with `shop`, sorted by `monthlyVisits`, `activeAds` or `growth30d`.
 
 ## Answer
 
-Write the brief in this order, and leave out any part the data doesn't cover:
+Write a full brief in this order, and leave out any part the data doesn't cover:
 
 1. **Snapshot:** traffic, main markets, active ads, product count.
 2. **What they sell:** top products with prices and links.
@@ -28,6 +30,6 @@ Write the brief in this order, and leave out any part the data doesn't cover:
 
 When an answer carries `restrictions`, the user's plan shortened it. Say what was left out. Don't paste raw JSON.
 
-When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other tools. Tell the user which brands the demo covers (the message lists them) and that other brands need a paid SellWinners plan, with the plans link the message gives.
+When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other SellWinners tools. Tell the user which brands the demo covers (the message lists them) and that other brands need a paid SellWinners plan, with the plans link the message gives.
 
 When a tool answers that the monthly quota is used up, or that the plan doesn't include MCP access, stop calling SellWinners tools for this request. Tell the user in one sentence, with the reset date or the plans link the message gives.

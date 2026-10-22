@@ -7,6 +7,8 @@ description: Follow the brands the user tracks in SellWinners, covering the dail
 
 Use the tools of the SellWinners connector. Every call except `usage_get` and `check_credits` counts once against the user's monthly quota.
 
+These steps and answer formats are defaults. When the user explicitly asks for a different format, order, number of results or SellWinners tool, follow the user. The rules on confirmations, public links, the plan and the monthly quota always apply.
+
 ## Read what changed
 
 - **Daily digest:** `daily_radar` lists who launched ads in the last day and the last week, most active first. Pass `folder_id` to keep one folder; `list_brandtracker_folders` lists them.
@@ -26,6 +28,6 @@ Lead with what changed and why it matters: new launches, ads gaining rank, new h
 
 Tools that delete, archive, remove or create a public share link need `confirm=true`. Before you pass it, tell the user exactly what will be removed or made public and wait for them to agree. A public link lets anyone who has it see the board, folder or ad.
 
-When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other tools. Tell the user which brands the demo covers (the message lists them) and that other brands need a paid SellWinners plan, with the plans link the message gives.
+When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other SellWinners tools. Tell the user which brands the demo covers (the message lists them) and that other brands need a paid SellWinners plan, with the plans link the message gives.
 
 When a tool answers that the monthly quota is used up, or that the plan doesn't include MCP access, stop calling SellWinners tools for this request. Tell the user in one sentence, with the reset date or the plans link the message gives.
