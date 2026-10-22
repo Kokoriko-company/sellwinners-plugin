@@ -1,7 +1,7 @@
 {
   "name": "sellwinners",
   "displayName": "SellWinners",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "E-commerce and ad intelligence in Claude: find winning products, study Meta, Google and TikTok ad creatives, brief a competitor's Shopify store and emails, and follow the brands you track.",
   "author": {
     "name": "SellWinners",
@@ -20,7 +20,7 @@
     "api_key": {
       "type": "string",
       "title": "SellWinners API key",
-      "description": "Create a key at https://sellwinners.com/dashboard/keys. A paid plan reads every brand; the Free plan is a demo that reads a fixed set of demo brands only. Each tool call counts once against your plan's monthly quota.",
+      "description": "Create a key at https://sellwinners.com/dashboard/keys. What the tools can do depends on your SellWinners plan, described at https://sellwinners.com/pricing.",
       "sensitive": true,
       "required": true
     }

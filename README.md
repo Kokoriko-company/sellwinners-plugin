@@ -33,16 +33,15 @@ In Claude Code you can also run each one directly, for example `/sellwinners:com
 
 ## Plans
 
-- **Paid plans** read every brand, store, ad and email, within the plan's monthly quota and rate limit.
-- **Free** is a demo: the tools answer only about a fixed set of demo brands, which the answers list. A question about any other brand is refused, and Claude tells you which brands the demo covers instead of retrying.
+Your SellWinners plan decides what the tools can do, how many requests you have each month and how fast you can make them. Plans are described on the [pricing page](https://sellwinners.com/pricing).
 
-Plans, prices and quotas are on the [pricing page](https://sellwinners.com/pricing).
+A call your plan doesn't allow comes back as an error that gives the reason.
 
 ## What the plugin sends, and where
 
 - The plugin itself runs no code on your machine and stores nothing. It contains only skills (Markdown) and one MCP server reference.
 - Claude sends each tool call to the SellWinners MCP server at `https://mcp.sellwinners.com/mcp` over HTTPS, with your API key in the `X-API-Key` header. A call carries only the arguments Claude chose for that tool, such as a niche, keywords, a store domain or an ad id. Your conversation is not sent.
-- SellWinners counts each tool call once against your plan's monthly quota, except the usage tools (`usage_get`, `check_credits`), and keeps a request log for metering, abuse prevention and support. The [privacy policy](https://sellwinners.com/privacy) covers what is kept and for how long.
+- Tool calls count against your plan's requests, as the [pricing page](https://sellwinners.com/pricing) describes. SellWinners keeps a request log for metering, abuse prevention and support. The [privacy policy](https://sellwinners.com/privacy) covers what is kept and for how long.
 - Write tools change your own SellWinners account only: tracked brands, boards, favorites and share links. Tools that delete, archive or create a public link require an explicit confirmation, and the skills tell Claude to ask you first.
 - Answers can contain links to ad images, videos and product pages. Opening one fetches it from SellWinners or from the store that hosts it.
 

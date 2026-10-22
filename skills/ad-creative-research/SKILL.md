@@ -5,7 +5,7 @@ description: Research ad creatives on Meta (Facebook and Instagram), Google and 
 
 # Research ad creatives
 
-Use the tools of the SellWinners connector. Every call except `usage_get` and `check_credits` counts once against the user's monthly quota, so prefer the tools that answer in one call.
+Use the tools of the SellWinners connector. Tool calls count against the user's SellWinners plan (`usage_get` shows what is left), so prefer the tools that answer in one call.
 
 ## Pick the tool
 
@@ -28,4 +28,4 @@ Search tools answer with `data` and `pagination`. Ask for the next `page` only w
 - When the user wants their own ads, write new hooks and scripts from those patterns in their brand's voice; don't copy a competitor's copy word for word.
 - When an answer carries `restrictions`, the user's plan shortened it. Say what was left out.
 
-When a tool refuses with `plan_not_eligible`, or an answer's `restrictions` say it covers only the demo brands, the user is on the Free plan, which reads a fixed set of demo brands only. Don't retry with other brands or other tools. Tell the user which brands the demo covers (the message lists them) and that every other brand needs a paid SellWinners plan.
+When a tool says a request is outside the user's plan (`plan_not_eligible`), don't try to get the same data another way, with other brands or other SellWinners tools. Tell the user in one sentence what the message says, and answer the rest of the question with what the plan covers.
