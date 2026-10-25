@@ -27,22 +27,39 @@ In Claude Code you can also run each one directly, for example `/sellwinners:com
 
 ## Setup
 
-1. Create a SellWinners account at [sellwinners.com](https://sellwinners.com) and an API key at [sellwinners.com/dashboard/keys](https://sellwinners.com/dashboard/keys).
-2. Install the plugin. Claude Code asks for the API key when the plugin is enabled and keeps it in your system's secure credential store, not in a settings file.
+You need a SellWinners account. What the tools can do depends on your plan; see [Plans](#plans).
+
+1. Create an account at [sellwinners.com](https://sellwinners.com) if you don't have one.
+2. Install the plugin and connect it to your account:
+   - **claude.ai, Claude Desktop or Cowork:** add SellWinners from **Customize → Plugins → Discover**, open its **Connectors** tab, select **Add** if it shows Not added, then **Connect**. On Team or Enterprise plans, an Owner adds the connector first.
+   - **Claude Code:** install it with `/plugin install sellwinners --marketplace Kokoriko-company/sellwinners-plugin` (Claude Code 2.1.275 or later; or install it from `/plugin`), then run `/mcp`, choose the **sellwinners** server (listed as `plugin:sellwinners:sellwinners`) and select **Authenticate**. Claude Code stores the sign-in with its other credentials and renews it on its own.
+
+   Either way your browser opens SellWinners. Log in as usual and select **Allow**. If you're in more than one SellWinners workspace, the same page asks which one Claude works in: the connection then uses that workspace's plan, saved items and tracked brands, and counts its requests there.
 3. Ask a question. Claude calls the SellWinners tools it needs.
+
+To disconnect, open **Dashboard → MCP server → Connected apps** on sellwinners.com and select **Disconnect**. In Claude Code, **Clear authentication** in `/mcp` also ends the connection on SellWinners. A connection that goes unused ends on its own after 60 days.
+
+**Using an API key instead.** For scripts and machines where no browser can open, leave the plugin's sign-in aside and add the server with a key from [sellwinners.com/dashboard/keys](https://sellwinners.com/dashboard/keys):
+
+```bash
+claude mcp add --transport http sellwinners-key https://mcp.sellwinners.com/mcp --header "X-API-Key: YOUR_KEY"
+```
+
+With a key, a used-up monthly quota, the rate limit or a plan without MCP access comes back as an HTTP error (402, 429 or 403) that gives the reason. A tool your plan doesn't include answers with a short message, as it does when you're signed in.
 
 ## Plans
 
 Your SellWinners plan decides what the tools can do, how many requests you have each month and how fast you can make them. Plans are described on the [pricing page](https://sellwinners.com/pricing).
 
-A call your plan doesn't allow comes back as an error that gives the reason.
+When you're signed in and a request is outside your plan, or your requests for the month are used up, the tool answers with a short message. Claude tells you what it says, with the link SellWinners gives, and doesn't try to get around it.
 
 ## What the plugin sends, and where
 
 - The plugin itself runs no code on your machine and stores nothing. It contains only skills (Markdown) and one MCP server reference.
-- Claude sends each tool call to the SellWinners MCP server at `https://mcp.sellwinners.com/mcp` over HTTPS, with your API key in the `X-API-Key` header. A call carries only the arguments Claude chose for that tool, such as a niche, keywords, a store domain or an ad id. Your conversation is not sent.
+- Signing in happens on sellwinners.com, in your browser. Claude never sees your password. SellWinners gives Claude an access token that lasts one hour and a refresh token that renews it; the connection appears under **Dashboard → MCP server → Connected apps** until you disconnect it.
+- Claude sends each tool call to the SellWinners MCP server at `https://mcp.sellwinners.com/mcp` over HTTPS, with the access token in the `Authorization` header. A call carries only the arguments Claude chose for that tool, such as a niche, keywords, a store domain or an ad id. Your conversation is not sent.
 - Tool calls count against your plan's requests, as the [pricing page](https://sellwinners.com/pricing) describes. SellWinners keeps a request log for metering, abuse prevention and support. The [privacy policy](https://sellwinners.com/privacy) covers what is kept and for how long.
-- Write tools change your own SellWinners account only: tracked brands, boards, favorites and share links. Tools that delete, archive or create a public link require an explicit confirmation, and the skills tell Claude to ask you first.
+- Write tools change your own SellWinners account only: tracked brands, boards, favorites and share links. Tools that delete or archive something or create a public link require an explicit confirmation, and the skills tell Claude to ask you first.
 - Answers can contain links to ad images, videos and product pages. Opening one fetches it from SellWinners or from the store that hosts it.
 
 ## Privacy
@@ -51,9 +68,22 @@ The [SellWinners privacy policy](https://sellwinners.com/privacy) applies to eve
 
 ## Support
 
-- Documentation: [sellwinners.com/docs](https://sellwinners.com/docs) and [sellwinners.com/mcp](https://sellwinners.com/mcp)
+- Documentation: [sellwinners.com/mcp](https://sellwinners.com/mcp) and the API reference at [sellwinners.com/docs](https://sellwinners.com/docs)
 - Contact: [sellwinners.com/contact](https://sellwinners.com/contact) or support@sellwinners.com
+- Security issues: support@sellwinners.com, with "Security" in the subject
 - Terms: [sellwinners.com/terms](https://sellwinners.com/terms)
+
+## Repository layout
+
+The same folder is also the source of the SellWinners plugin for ChatGPT. Each directory reads its own manifest, and both use the same skills and the same MCP server:
+
+| Files | Used by |
+| - | - |
+| `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `.mcp.json` | Claude |
+| `plugin.json`, `mcp.json` ([Agent Plugins](https://agent-plugins.org) format) | ChatGPT |
+| `skills/`, `assets/` | Both |
+
+Claude ignores the ChatGPT files. The ChatGPT package is a ZIP of the ChatGPT files, the skills and the images.
 
 ## License
 

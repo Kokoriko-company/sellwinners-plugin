@@ -2,10 +2,7 @@
   "mcpServers": {
     "sellwinners": {
       "type": "http",
-      "url": "https://mcp.sellwinners.com/mcp",
-      "headers": {
-        "X-API-Key": "${user_config.api_key}"
-      }
+      "url": "https://mcp.sellwinners.com/mcp"
     }
   }
 }
