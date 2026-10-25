@@ -7,7 +7,8 @@
     "name": "SellWinners",
     "url": "https://sellwinners.com"
   },
-  "homepage": "https://sellwinners.com/mcp",
+  "homepage": "https://sellwinners.com",
+  "repository": "https://github.com/Kokoriko-company/sellwinners-plugin",
   "keywords": ["ecommerce", "shopify", "product research", "ad library", "facebook ads", "tiktok ads", "competitor research", "email marketing"],
   "extensions": {
     "com.openai": {
