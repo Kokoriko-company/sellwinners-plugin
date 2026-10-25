@@ -34,7 +34,7 @@ You need a SellWinners account. What the tools can do depends on your plan; see 
    - **claude.ai, Claude Desktop or Cowork:** add SellWinners from **Customize → Plugins → Discover**, open its **Connectors** tab, select **Add** if it shows Not added, then **Connect**. On Team or Enterprise plans, an Owner adds the connector first.
    - **Claude Code:** install it with `/plugin install sellwinners --marketplace Kokoriko-company/sellwinners-plugin` (Claude Code 2.1.275 or later; or install it from `/plugin`), then run `/mcp`, choose the **sellwinners** server (listed as `plugin:sellwinners:sellwinners`) and select **Authenticate**. Claude Code stores the sign-in with its other credentials and renews it on its own.
 
-   Either way your browser opens SellWinners. Log in as usual and select **Allow**.
+   Either way your browser opens SellWinners. Log in as usual and select **Allow**. If you're in more than one SellWinners workspace, the same page asks which one Claude works in: the connection then uses that workspace's plan, saved items and tracked brands, and counts its requests there.
 3. Ask a question. Claude calls the SellWinners tools it needs.
 
 To disconnect, open **Dashboard → MCP server → Connected apps** on sellwinners.com and select **Disconnect**. In Claude Code, **Clear authentication** in `/mcp` also ends the connection on SellWinners. A connection that goes unused ends on its own after 60 days.
@@ -45,7 +45,7 @@ To disconnect, open **Dashboard → MCP server → Connected apps** on sellwinne
 claude mcp add --transport http sellwinners-key https://mcp.sellwinners.com/mcp --header "X-API-Key: YOUR_KEY"
 ```
 
-With a key, a call your plan doesn't allow comes back as an HTTP error (402, 403 or 429) that gives the reason.
+With a key, a used-up monthly quota, the rate limit or a plan without MCP access comes back as an HTTP error (402, 429 or 403) that gives the reason. A tool your plan doesn't include answers with a short message, as it does when you're signed in.
 
 ## Plans
 
