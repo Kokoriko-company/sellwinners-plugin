@@ -52,9 +52,9 @@
             },
             {
               "description": "Ad research with filters",
-              "prompt": "Find the highest-reach video ads for protein powder running in the United States.",
+              "prompt": "Find the highest-reach video ads for protein powder running in the United Kingdom.",
               "tools_triggered": "search_ads",
-              "expected_behavior": "Calls search_ads with the words protein powder, video media, country US and a reach ranking, then lists ads with the brand, ad copy, reach, how long each has run and a link to the creative."
+              "expected_behavior": "Calls search_ads with the words protein powder, video media, country GB and a reach ranking, then lists ads with the brand, ad copy, reach, how long each has run and a link to the creative."
             },
             {
               "description": "Competitor brief on a store",

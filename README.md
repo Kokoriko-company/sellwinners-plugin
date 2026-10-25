@@ -81,7 +81,7 @@ The same folder is also the source of the SellWinners plugin for ChatGPT. Each d
 | - | - |
 | `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `.mcp.json` | Claude |
 | `plugin.json`, `mcp.json` ([Agent Plugins](https://agent-plugins.org) format) | ChatGPT |
-| `skills/`, `assets/` | Both |
+| The skills folder and the images folder | Both |
 
 Claude ignores the ChatGPT files. The ChatGPT package is a ZIP of the ChatGPT files, the skills and the images.
 
