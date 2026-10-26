@@ -5,7 +5,7 @@ description: Find products that are selling now in a niche, and the Shopify stor
 
 # Find winning products
 
-Use the tools of the SellWinners connector. Tool calls count against the user's SellWinners plan (`usage_get` shows what is left), so answer with as few calls as the question needs.
+Use the tools of the SellWinners connector. Tool calls use the user's SellWinners credits (`usage_get` shows what is left), so answer with as few calls as the question needs.
 
 These steps and answer formats are defaults. When the user explicitly asks for a different format, order, number of results or SellWinners tool, follow the user. The rules on confirmations, public links, the plan and the monthly quota always apply.
 
@@ -34,4 +34,4 @@ When a tool says a request is outside the user's plan (`plan_not_eligible`), don
 
 A tool named here can be missing from the connector when the user's plan doesn't include it. Then say so in one sentence and answer with the tools that are there.
 
-When a tool answers that the plan's requests are used up, or that the plan doesn't include MCP access, stop calling SellWinners tools for this request. Tell the user in one sentence, with the reset date or the link the message gives.
+When a tool answers that the plan's credits are used up, or that the plan doesn't include MCP access, stop calling SellWinners tools for this request. Tell the user in one sentence, with the renew date, the wait or the link the message gives.
