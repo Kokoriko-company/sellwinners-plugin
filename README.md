@@ -45,7 +45,7 @@ To disconnect, open **Dashboard → MCP server → Connected apps** on sellwinne
 claude mcp add --transport http sellwinners-key https://mcp.sellwinners.com/mcp --header "X-API-Key: YOUR_KEY"
 ```
 
-With a key, used-up credits, the rate limit or a plan without MCP access comes back as an HTTP error (402, 429 or 403) that gives the reason. A tool your plan doesn't include answers with a short message, as it does when you're signed in.
+With a key, as when you're signed in, a tool call made with your credits used up or past the rate limit answers with a short message instead of running: it says what happened, when your credits renew or how many seconds to wait, and costs nothing. A tool your plan doesn't include answers with a short message too. A plan without MCP access is refused with an HTTP 403 that gives the reason.
 
 ## Plans
 
